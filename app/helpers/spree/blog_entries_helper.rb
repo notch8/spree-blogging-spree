@@ -7,9 +7,11 @@ module Spree
 
     def blog_entry_permalink(e)
       unless e.published_at.nil?
-        blog_entry_permalink_path :year => e.published_at.strftime("%Y"), :month => e.published_at.strftime("%m"), :day => e.published_at.strftime("%d"), :slug => e.permalink
+        blog_entry_permalink_path :slug => e.permalink
+        # blog_entry_permalink_path :year => e.published_at.strftime("%Y"), :month => e.published_at.strftime("%m"), :day => e.published_at.strftime("%d"), :slug => e.permalink
       else
-        blog_entry_permalink_path :year => "na", :month => "na", :day => "na", :slug => e.permalink
+        blog_entry_permalink_path :slug => e.permalink
+        # blog_entry_permalink_path :year => e.published_at.strftime("%Y"), :month => e.published_at.strftime("%m"), :day => e.published_at.strftime("%d"), :slug => e.permalink
       end
     end
 
