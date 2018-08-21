@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   spree_version = '>= 3.4.4', '< 4.0'
-  s.add_dependency 'acts-as-taggable-on', '~> 5.0'
+  s.add_dependency 'acts-as-taggable-on', '~> 6.0'
 
   # s.add_development_dependency 'capybara', '~> 2.2.1'
   # s.add_development_dependency 'coffee-rails', '~> 4.0.0'
