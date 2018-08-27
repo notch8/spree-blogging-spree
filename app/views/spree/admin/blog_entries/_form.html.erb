@@ -107,6 +107,14 @@
     <%= field_set_tag t('spree.blog_entry_featured_image') %>
   </div>
 
+  <div class="omega six columns">
+
+    <%= form.field_container :author_id do %>
+      <%= form.label :author_id, Spree.t(:author_id) %><br />
+      <%= form.select :author_id, Spree.user_class.joins(:spree_roles).where("#{Spree::Role.table_name}.name" => "blogger").collect {|u| [u.email, u.id]}, {:include_blank => true}, :class => 'select2' %>
+    <% end %>
+
+    <%= field_set_tag Spree.t(:blog_entry_featured_image) do %>
   <% @blog_entry.build_blog_entry_image unless @blog_entry.blog_entry_image %>
 
   <%= form.fields_for :blog_entry_image do |blog_entry_image_field| %>
@@ -167,10 +175,19 @@
   </div>
 </div>
 
+<%= form.field_container :body do %>
+  <%= form.label :body %> <span class="required">*</span><br />
+  <%= form.cktext_area :body, {:cols => 60, :rows => 4, :class => 'fullwidth', :id => 'blog_entry_body'} %>
+  <%= form.error_message_on :body %>
+<% end %>
+
 <div class="row">
   <div class="col-sm-12">
     <%= form.field_container :seo_description do %>
       <div class="form-group">
+  <%= form.label :summary %><br />
+  <%= form.cktext_area :summary, {:cols => 60, :rows => 4, :class => 'fullwidth', :id => 'blog_entry_summary'} %>
+  <%= form.error_message_on :summary %>
         <%= form.label :seo_description %>
         <%= form.text_area :seo_description, { rows: 3, class: 'form-control', id: 'blog_entry_seo_description'} %>
         <%= form.error_message_on :seo_description %>

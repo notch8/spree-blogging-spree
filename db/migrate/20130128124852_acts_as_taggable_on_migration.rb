@@ -1,4 +1,4 @@
-class ActsAsTaggableOnMigration < ActiveRecord::Migration[5.1]
+class ActsAsTaggableOnMigration < ActiveRecord::Migration[4.2]
   def self.up
     create_table :tags do |t|
       t.string :name
@@ -19,7 +19,7 @@ class ActsAsTaggableOnMigration < ActiveRecord::Migration[5.1]
       t.datetime :created_at
     end
 
-    add_index :taggings, :tag_id
+    add_index :taggings, :tag_id unless index_exists?(:taggings, :tag_id)
     add_index :taggings, [:taggable_id, :taggable_type, :context]
   end
 
