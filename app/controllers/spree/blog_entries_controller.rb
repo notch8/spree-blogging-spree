@@ -29,8 +29,8 @@ class Spree::BlogEntriesController < Spree::StoreController
     @tag_name = params[:tag]
   end
 
-   def categories
-     @categories = Spree::BlogEntry.category_counts
+  def categories
+    @categories = Spree::BlogEntry.category_counts
   end
 
   def category
